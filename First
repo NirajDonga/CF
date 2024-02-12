@@ -1,0 +1,33 @@
+
+#include <bits/stdc++.h>
+#include <vector>
+#define ll long long int
+using namespace std;
+
+int main() {
+    ll a, x, t, ans;
+    cin >> t;
+    while (t--) {
+        vector<ll> e;
+        ll n, Max = -1, Min = 1000000000;
+        cin >> n;
+        while (n-->0) {
+            cin >> a >> x;
+            if (a == 1) {
+                Max = max(x, Max);
+            } else if (a == 2) {
+                Min = min(x, Min);
+            } else {
+                e.push_back(x);
+            }
+        }
+        ans = Min - Max + 1;
+        for (ll i : e) {
+            if (i <= Min && i >= Max) {
+                ans--;
+            }
+        }
+        cout << max(0ll, ans) << endl;
+    }
+    return 0;
+}
